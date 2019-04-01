@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: zh
+    password: 277708272
+    virtual-host: zh
