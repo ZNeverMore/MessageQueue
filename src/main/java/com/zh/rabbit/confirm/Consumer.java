@@ -1,4 +1,4 @@
-package com.zh.rabbit.transaction;
+package com.zh.rabbit.confirm;
 
 import com.rabbitmq.client.*;
 import com.zh.rabbit.util.ConnectionUtils;
@@ -12,22 +12,20 @@ import java.util.concurrent.TimeoutException;
  * @date 2019-04-01
  */
 
-public class Consumer1 {
+public class Consumer {
 
-    private static final String QUEUE_NAME = "test_queue_transaction";
+    private static final String QUEUE_NAME = "test_queue_confirm";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false,false,null
-        );
-        channel.basicConsume(QUEUE_NAME, true, new DefaultConsumer(channel){
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.basicConsume(QUEUE_NAME, true, new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                System.out.println("transaction mode consumer receive message: " + new String(body, StandardCharsets.UTF_8));
+                System.out.println("confirm mode consumer receive message: " + new String(body, StandardCharsets.UTF_8));
             }
         });
-
 
     }
 
