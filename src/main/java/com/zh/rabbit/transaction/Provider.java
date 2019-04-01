@@ -26,10 +26,12 @@ public class Provider {
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         String message = "hello transaction";
         try {
+//           代表开启事务
             channel.txSelect();
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-            int a = 1/0;
+//            int a = 1/0;
             System.out.println("transaction mode provider publish message: " + message);
+//            提交事务
             channel.txCommit();
         } catch (Exception e) {
             channel.txRollback();
