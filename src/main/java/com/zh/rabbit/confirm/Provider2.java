@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Provider2 {
 
-    private static final String QUEUE_NAME = "test_queue_confirm";
+    private static final String QUEUE_NAME = "test_queue_confirm_multiple";
 
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         Connection connection = ConnectionUtils.getConnection();

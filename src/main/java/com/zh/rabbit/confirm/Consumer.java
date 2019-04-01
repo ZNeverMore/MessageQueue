@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Consumer {
 
-    private static final String QUEUE_NAME = "test_queue_confirm";
+    private static final String QUEUE_NAME = "test_queue_confirm_asyn";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();
