@@ -22,7 +22,7 @@ public class Provider {
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
         channel.queueDeclare(QUEUE_NAME, false, false, false,null);
-//        生产者调用将channel设置为confirm模式,若已经设置为事务模式，则不能再设置为confirm模式
+//         生产者调用将channel设置为confirm模式,若已经设置为事务模式，则不能再设置为confirm模式
         channel.confirmSelect();
         String message = "hello confirm";
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
